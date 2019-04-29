@@ -527,7 +527,7 @@ void SGMStereo::addPixelwiseHamming(const int* leftCensusRow, const int* rightCe
 		int hammingDistance = 0;
 		for (int d = 0; d <= x; ++d) {
 			int rightCensusCode = rightCensusRow[x - d];
-			hammingDistance = static_cast<int>(_mm_popcnt_u32(static_cast<unsigned int>(leftCencusCode^rightCensusCode)));
+			hammingDistance = static_cast<int>(__builtin_popcount(static_cast<unsigned int>(leftCencusCode^rightCensusCode)));
 			pixelwiseCostRow_[disparityTotal_*x + d] += static_cast<unsigned char>(hammingDistance*censusWeightFactor_);
 		}
 		hammingDistance = static_cast<unsigned char>(hammingDistance*censusWeightFactor_);
@@ -539,7 +539,7 @@ void SGMStereo::addPixelwiseHamming(const int* leftCensusRow, const int* rightCe
 		int leftCencusCode = leftCensusRow[x];
 		for (int d = 0; d < disparityTotal_; ++d) {
 			int rightCensusCode = rightCensusRow[x - d];
-			int hammingDistance = static_cast<int>(_mm_popcnt_u32(static_cast<unsigned int>(leftCencusCode^rightCensusCode)));
+			int hammingDistance = static_cast<int>(__builtin_popcount(static_cast<unsigned int>(leftCencusCode^rightCensusCode)));
 			pixelwiseCostRow_[disparityTotal_*x + d] += static_cast<unsigned char>(hammingDistance*censusWeightFactor_);
 		}
 	}
