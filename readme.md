@@ -1,6 +1,6 @@
 ## SPS-Stereo: Slanted Plane Smoothing Stereo
 
-SPS-Stereo is a dense stereo method employing a slanted plane model. It jointly estimates a superpixel segmentation, boundry labels (such as occlusion boundaries), and a dense depth estimate from a pair of stereo images.
+SPS-Stereo is a dense stereo method employing a slanted plane model. It jointly estimates a superpixel segmentation, boundry labels (such as occlusion boundaries), and a dense disparity map from a pair of stereo images. It only works on a pair of stereo images whose epipolar lines are aligned vertically. SPS-Stereo then tries to estimate a horizontal disparity for each pixel location in the left image.
 
 **Citation**  
 
@@ -15,9 +15,10 @@ SPS-Stereo is a dense stereo method employing a slanted plane model. It jointly 
 ### Building SPS-Stereo
 
 1. Prerequisites
-    * opencv
+    * opencv 3.4.5
 2. Building
-    1. type 'cmake .'
+    1. type 'mkdir build && cd build/'
+    1. type 'cmake ..'
     2. type 'make'
 
 
