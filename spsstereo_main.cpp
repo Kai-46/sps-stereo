@@ -82,7 +82,7 @@ int main(int argc, char* argv[]) {
     if (slashPosition != std::string::npos) outputBaseFilename.erase(0, slashPosition + 1);
     size_t dotPosition = outputBaseFilename.rfind('.');
     if (dotPosition != std::string::npos) outputBaseFilename.erase(dotPosition);
-    std::string outputDisparityImageFilename = output_dir + outputBaseFilename + "_left_disparity.png";
+    std::string outputDisparityImageFilename = output_dir + outputBaseFilename + "_disparity.png";
     std::string outputSegmentImageFilename = output_dir + outputBaseFilename + "_segment.png";
     std::string outputBoundaryImageFilename = output_dir + outputBaseFilename + "_boundary.png";
     std::string outputDisparityPlaneFilename = output_dir + outputBaseFilename + "_plane.txt";
