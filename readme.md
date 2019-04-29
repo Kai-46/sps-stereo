@@ -18,46 +18,36 @@ SPS-Stereo is a dense stereo method employing a slanted plane model. It jointly 
     * opencv 3.4.5
 2. Building
     1. type 'mkdir build && cd build/'
-    1. type 'cmake ..'
-    2. type 'make'
+    2. type 'cmake ..'
+    3. type 'make'
 
 
-### Usage of demo code
+### Usage
+    ./spsstereo left_image right_image output_dir
 
-First, download KITTI stereo/flow dataset from [KITTI Vision Benchmark Suite homepage](http://www.cvlibs.net/datasets/kitti/eval_stereo_flow.php?benchmark=stereo) and extract it.
-
-Run SPS-Stereo  
-`> ./spsstereo images.txt`
-
-where images.txt looks like:
-	left_image_1.png
-	right_image_1.png
-	..
-	left_image_N.png
-	right_image_N.png
 
 **Outputs**  
 
-* `000000_10_disp.png`  
+* `{left_image_basename}_disparity.png`  
 Disparity image (PNG 16bit grayscale format)  
-(Disparity value) = (Pixel value)/256.0
+(Disparity value) = (Pixel value - 0.5)/256.0
 
-* `000000_10L_seg.png`  
+* `{left_image_basename}_segment.png`  
 Segmentation image (PNG 16bit grayscale format)  
 (Segment ID) = (Pixel value)
 
-* `000000_10L_plane.png`  
+* `{left_image_basename}_plane.txt`  
 Estimated disparity planes  
 the number of lines = the number of segments  
 Each line includes parameters of disparity plane of a segment: `(A_i, B_i, C_i)`
 
-* `000000_10L_label.txt`  
+* `{left_image_basename}_label.txt`  
 Boundary labeling result  
 the number of lines = the number of boundaries  
 Each line includes three entries: `SegmentID1 SegmentID2 boundary_label`  
 `boundary_label`: 0 (Occlusion, SegmentID1 is front), 1 (Occlusion, SegmentID2 is front), 2 (Hinge), 3 (Coplanar)
 
-* `000000_10L_boundary.png`  
+* `{left_image_basename}_boundary.png`  
 Visualization of segmentation result  
 Boundary color means a type of relationship between neighboring segments: Red/Blue-Occluion (Red side is front), Green-Hinge, Gray- Coplaner
 
